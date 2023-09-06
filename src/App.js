@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import AddContact from './components/AddContact';
 import ContactList from './components/ContactList';
 
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
 
 function App() {
@@ -38,8 +40,12 @@ function App() {
   return (
     <main className='app'>
       <h1>Contact App</h1>
-      <AddContact addContact={addContact} />
-      <ContactList contactList={contacts} removeContactHandler={removeContactHandler} />
+
+      <Routes>
+        <Route path='/add' element={<AddContact addContact={addContact} />} />
+        <Route path="/" element={<ContactList contactList={contacts} removeContactHandler={removeContactHandler} />} />
+      </Routes>
+
     </main>
   );
 }
