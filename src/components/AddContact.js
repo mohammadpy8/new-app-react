@@ -13,6 +13,11 @@ const AddContact = ({addContact}) => {
 
     const submitForm = event => {
 
+        if (!contact.name || !contact.email) {
+            alert("khalie");
+            return;
+        }
+
         event.preventDefault();
         addContact(contact);
         setContact({ name: "", email: "" });

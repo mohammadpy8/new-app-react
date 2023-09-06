@@ -12,13 +12,20 @@ function App() {
   const addContact = contact => {
     
     setContacts([...contacts, { id: crypto.randomUUID(), ...contact }]);
-  };
+  }; 
+
+  const removeContactHandler = (id) => {
+
+    const filteredContact = contacts.filter(contact => contact.id !== id);
+    setContacts(filteredContact)
+
+  }
 
   return (
     <main className='app'>
       <h1>Contact App</h1>
       <AddContact addContact={addContact} />
-      <ContactList contactList={contacts} />
+      <ContactList contactList={contacts} removeContactHandler={removeContactHandler} />
     </main>
   );
 }
