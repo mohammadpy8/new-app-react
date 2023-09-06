@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import "./AddContact.css";
 
-const AddContact = () => {
+const AddContact = ({addContact}) => {
 
     const [contact, setContact] = useState({
         name: "",
@@ -11,12 +11,15 @@ const AddContact = () => {
 
     const changeHandler = event => setContact({ ...contact, [event.target.name]: event.target.value });
 
-    const submitHandler = event => {
+    const submitForm = event => {
+
         event.preventDefault();
-    }
+        addContact(contact);
+        setContact({ name: "", email: "" });
+    };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitForm}>
             <div className='form-control'>
                 <label>name</label>
                 <input type="text" name='name' value={contact.name} onChange={changeHandler}/>
