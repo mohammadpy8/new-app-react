@@ -11,10 +11,12 @@ const ContactList = ({ contactList, removeContactHandler }) => {
         ? contactList.map((contact) => {
             const { name, email, id } = contact;
             return (
-              <div key={id}>
-                    <p>name:{name}</p>
-                    <p>email:{email}</p>
-                    <button onClick={() => removeContactHandler(id)}>delete</button>
+              <div key={id} className="contact-list">
+                <div className="details">
+                  <p>name:{name}</p>
+                  <p>email:{email}</p>
+                </div>
+                <button onClick={() => removeContactHandler(id)}>delete</button>
               </div>
             );
           })

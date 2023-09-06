@@ -10,6 +10,8 @@
 }
 
 h1 {
-  border-bottom:1px solid #8095ff ;
+  border:2px solid #1736ff ;
   color: #210dd3;
+  border-radius: 10px;
+  padding: 5px 20px;
 }

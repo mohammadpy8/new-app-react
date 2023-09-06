@@ -1,0 +1,29 @@
+.contact-list {
+    margin-top: 20px;
+    border: 2px solid #1736ff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.details {
+    margin-right: 50px;
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: #1736ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 0 10px #415aff;
+    cursor: pointer;
+    font-weight: bold;
+}
+p {
+    font-size: 1.2rem;
+    color: #0022ff;
+}
