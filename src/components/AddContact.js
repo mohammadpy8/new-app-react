@@ -16,7 +16,7 @@ const AddContact = ({addContact}) => {
         if (!contact.name || !contact.email) {
             alert("khalie");
             return;
-        }
+        };
 
         event.preventDefault();
         addContact(contact);

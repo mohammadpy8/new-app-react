@@ -1,12 +1,15 @@
 .app {
+  display: flex;
+  flex-direction: column;
   background-color: #f6f6f6;
   width: 100vw;
   height: 100vh;
+  align-items: center;
   text-align: center;
   padding-top: 20px;
 }
 
 h1 {
-  border-bottom:1px solid #ccc ;
-  color: #444;
+  border-bottom:1px solid #8095ff ;
+  color: #210dd3;
 }
