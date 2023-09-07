@@ -6,6 +6,7 @@ import ContactList from './components/ContactList';
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
+import ContactDetails from './components/ContactDetails';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
       <Routes>
         <Route path='/add' element={<AddContact addContact={addContact} />} />
         <Route path="/" element={<ContactList contactList={contacts} removeContactHandler={removeContactHandler} />} />
+        <Route path='/user/:id' element={<ContactDetails />} />
       </Routes>
 
     </main>

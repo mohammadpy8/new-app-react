@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
 import "./ContactList.css";
 
@@ -19,15 +20,8 @@ const ContactList = ({ contactList, removeContactHandler }) => {
 
       {contactList.length
         ? contactList.map((contact) => {
-            const { name, email, id } = contact;
             return (
-              <div key={id} className="contact-list">
-                <div className="details">
-                  <p>name:{name}</p>
-                  <p>email:{email}</p>
-                </div>
-                <button onClick={() => removeContactHandler(id)}>delete</button>
-              </div>
+              <Contact removeContactHandler={removeContactHandler} contact={contact} key={contact.id} />
             );
           })
         : ""}
