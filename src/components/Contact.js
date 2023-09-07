@@ -8,7 +8,7 @@ const Contact = ({ removeContactHandler, contact }) => {
   return (
     <div className="contact-list">
       <div className="details">
-        <Link to={{pathname:`/user/${id}`, state: {contact}}}>
+        <Link to={{pathname:`/user/${id}`, state: {contact: contact}}}>
           <p>name:{name}</p>
           <p>email:{email}</p>
         </Link>

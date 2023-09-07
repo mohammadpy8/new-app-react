@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ContactDetails = (props) => {
-    console.log(props);
+const ContactDetails = ({ location }) => {
+    
     return (
         <div>
-            <p>user name is : </p>
-            <p>user email is :</p>
+            <p>user name is : {} </p>
+            <p>user email is : {}</p>
         </div>
     );
 };
