@@ -19,7 +19,7 @@ const LocationList = () => {
                 <p className="location">{item.smart_location}</p>
                 <p className="name">{item.name}</p>
                 <p className="price">
-                  €&nbps;{item.price}&nbps;
+                  € {item.price}
                   <span>night</span>
                 </p>
               </div>
