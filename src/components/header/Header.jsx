@@ -13,7 +13,9 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
 const Header = () => {
-  const [destination, setDestination] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [destination, setDestination] = useState(searchParams.get("destination") || "");
   const [openOption, setOpenOption] = useState(false);
   const [option, setOption] = useState({
     Adult: 1,
@@ -41,8 +43,6 @@ const Header = () => {
   };
 
   const navigate = useNavigate();
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const handelSearch = () => {
     const encodedParams = createSearchParams({
