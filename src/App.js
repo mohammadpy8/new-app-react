@@ -8,11 +8,13 @@ import Hotels from "./components/Hotels/Hotels";
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from "react-router-dom";
 
+import HotelsContextProvider from "./context/HotelsContextProvider";
+
 import "./App.css";
 
 function App() {
   return (
-    <div>
+    <HotelsContextProvider>
       <Toaster />
       <Header />
       <Routes>
@@ -22,7 +24,7 @@ function App() {
           <Route path=":id" element={<div></div>} />
         </Route>
       </Routes>
-    </div>
+    </HotelsContextProvider>
   );
 }
 
