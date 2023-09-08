@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import LocationList from "./components/LocationList/LocationList";
 
 import { Toaster } from 'react-hot-toast';
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 
@@ -11,7 +12,9 @@ function App() {
     <div>
       <Toaster />
       <Header />
-      <LocationList />
+      <Routes>
+        <Route path="/" element={<LocationList />} />
+      </Routes>
     </div>
   );
 }
