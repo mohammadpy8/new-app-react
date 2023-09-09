@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -8,21 +8,48 @@ const BASE_URL = "http://localhost:5000";
 
 const BookmarkContextProvider = ({ children }) => {
   const [currentBookmark, setCurrentBookmark] = useState([]);
-  const [isLoadingCurrentBookmark, setIsLoadingCurrentBookmark] =
-    useState(false);
+  const [bookmarks, setBookmarks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { isLoading, data: bookmarks } = useFetch(`${BASE_URL}/bookmarks`);
+  useEffect(() => {
+    const fetchBookmarkList = async () => {
+      setIsLoading(true);
+      try {
+        const { data } = await axios.get(`${BASE_URL}/bookmarks`);
+        setBookmarks(data);
+        setIsLoading(false);
+      } catch (err) {
+        toast.error(err?.message);
+        setIsLoading(false);
+      }
+    };
+    fetchBookmarkList();
+  }, []);
 
   const getBookmark = async (id) => {
-      setIsLoadingCurrentBookmark(true);
-      setCurrentBookmark([]);
+    setIsLoading(true);
+    setCurrentBookmark([]);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
       setCurrentBookmark(data);
-      setIsLoadingCurrentBookmark(false);
+      setIsLoading(false);
     } catch (err) {
       toast.error(err?.message);
-      setIsLoadingCurrentBookmark(false);
+      setIsLoading(false);
+    }
+  };
+
+  const createBookmark = async (newBookmark) => {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.post(`${BASE_URL}/bookmarks/`, newBookmark);
+      setCurrentBookmark(data);
+      setBookmarks((prev) => [...prev, data]);
+    } catch (err) {
+      toast.error(err?.message);
+    } finally {
+      setIsLoading(false);
+      toast.success("successfully");
     }
   };
 
@@ -32,8 +59,8 @@ const BookmarkContextProvider = ({ children }) => {
         isLoading,
         bookmarks,
         getBookmark,
-        isLoadingCurrentBookmark,
         currentBookmark,
+        createBookmark,
       }}
     >
       {children}

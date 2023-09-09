@@ -1368,6 +1368,96 @@
       "longitude": "67.78003711374224",
       "host_location": "Baba Kot Pakistan",
       "id": 8
+    },
+    {
+      "cityName": "Lenningen",
+      "countryName": "Luxembourg",
+      "countryCode": "🇱🇺",
+      "latitude": "49.60844813177617",
+      "longitude": "6.284179687500001",
+      "host_location": "Lenningen Luxembourg",
+      "id": 9
+    },
+    {
+      "cityName": "Lenningen",
+      "countryName": "Luxembourg",
+      "countryCode": "🇱🇺",
+      "latitude": "49.60844813177617",
+      "longitude": "6.284179687500001",
+      "host_location": "Lenningen Luxembourg",
+      "id": 10
+    },
+    {
+      "cityName": "Lenningen",
+      "countryName": "Luxembourg",
+      "countryCode": "🇱🇺",
+      "latitude": "49.60844813177617",
+      "longitude": "6.284179687500001",
+      "host_location": "Lenningen Luxembourg",
+      "id": 11
+    },
+    {
+      "cityName": "Lenningen",
+      "countryName": "Luxembourg",
+      "countryCode": "🇱🇺",
+      "latitude": "49.60844813177617",
+      "longitude": "6.284179687500001",
+      "host_location": "Lenningen Luxembourg",
+      "id": 12
+    },
+    {
+      "cityName": "Lenningen",
+      "countryName": "Luxembourg",
+      "countryCode": "🇱🇺",
+      "latitude": "49.60844813177617",
+      "longitude": "6.284179687500001",
+      "host_location": "Lenningen Luxembourg",
+      "id": 13
+    },
+    {
+      "cityName": "Kortemark",
+      "countryName": "Belgium",
+      "countryCode": "🇧🇪",
+      "latitude": "51.00057144452501",
+      "longitude": "2.9751491546630864",
+      "host_location": "Kortemark Belgium",
+      "id": 14
+    },
+    {
+      "cityName": "Kortemark",
+      "countryName": "Belgium",
+      "countryCode": "🇧🇪",
+      "latitude": "51.00057144452501",
+      "longitude": "2.9751491546630864",
+      "host_location": "Kortemark Belgium",
+      "id": 15
+    },
+    {
+      "cityName": "Poddebice",
+      "countryName": "Poland",
+      "countryCode": "🇵🇱",
+      "latitude": "51.82835502181185",
+      "longitude": "18.962402343750004",
+      "host_location": "Poddebice Poland",
+      "id": 16
+    },
+    {
+      "cityName": "Kortemark",
+      "countryName": "Belgium",
+      "countryCode": "🇧🇪",
+      "latitude": "51.00005305336395",
+      "longitude": "2.9565238952636723",
+      "host_location": "Kortemark Belgium",
+      "id": 17
+    },
+    {
+      "cityName": "Staden",
+      "countryName": "Belgium",
+      "countryCode": "🇧🇪",
+      "latitude": "50.974348743882835",
+      "longitude": "3.0145454406738286",
+      "host_location": "Staden Belgium",
+      "id": 18
     }
   ]
 }

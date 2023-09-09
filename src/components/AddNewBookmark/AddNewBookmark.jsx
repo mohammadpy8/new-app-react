@@ -4,6 +4,7 @@ import useUrlLocation from "../../hooks/useUrlLocation";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { toast } from "react-hot-toast";
+import { useBookmark } from "../../context/BookmarkContextProvider";
 
 const BASE_GEOCODING_URL =
   "https://api.bigdatacloud.net/data/reverse-geocode-client";
@@ -19,14 +20,34 @@ const getFlagEmojy = (countryCode) => {
 const AddNewBookmark = () => {
   const navigate = useNavigate();
 
+  const { createBookmark } = useBookmark();
+
   const handelBack = () => navigate(-1);
-  const submitHandel = (e) => e.preventDefault();
 
   const [cityName, setCityName] = useState("");
   const [countryName, setCountryName] = useState("");
   const [countryCode, setCountryCode] = useState("");
   const [isLoadingGeoCoding, setIsLoadingGeoCoding] = useState(false);
   const [geoCodingError, setGeoCodingError] = useState(null);
+
+  const submitHandel = async (e) => {
+    e.preventDefault();
+    if (!cityName || !countryName) return;
+    const newBookmark = {
+      cityName,
+      countryName,
+      countryCode,
+      latitude: lat,
+      longitude: lng,
+      host_location: cityName + " " + countryName,
+    };
+    await createBookmark(newBookmark);
+    setCityName("");
+    setCountryName("");
+    setTimeout(() => {
+      navigate("/bookmark");
+    }, 1500);
+  };
 
   const [lat, lng] = useUrlLocation();
 
@@ -81,7 +102,7 @@ const AddNewBookmark = () => {
             value={countryName}
             onChange={(e) => setCountryName(e.target.value)}
           />
-          <span className="flag">{countryCode}</span>
+          <span className="flag">{countryName && cityName && countryCode}</span>
         </div>
         <div className="buttons">
           <button onClick={handelBack} className="btn btn--back">
