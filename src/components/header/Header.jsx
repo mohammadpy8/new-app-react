@@ -7,7 +7,7 @@ import useOutsideClick from "../../hooks/useOutSideClick";
 import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 
-import { createSearchParams, json, useNavigate, useSearchParams } from "react-router-dom";
+import { createSearchParams, useNavigate, useSearchParams, NavLink } from "react-router-dom";
 
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -59,6 +59,7 @@ const Header = () => {
 
   return (
     <div className="header">
+      <NavLink to="/bookmark">Bookmarks</NavLink>
       <div className="headerSearch">
         <div className="headerSearchItem">
           <MdLocationOn className="headerIcon locationIcon" />
