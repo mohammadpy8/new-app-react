@@ -32,8 +32,25 @@ const bookmarkReducer = (state, action) => {
         bookmarks: action.payload,
       };
     case "bookmark/loaded":
+      return {
+        ...state,
+        isLoading: false,
+        currentBookmark: action.payload,
+      };
     case "bookmark/created":
+      return {
+        ...state,
+        isLoading: false,
+        bookmarks: [...state.bookmarks, action.payload],
+        currentBookmark: action.payload,
+      };
     case "bookmark/deleted":
+      return {
+        ...state,
+        isLoading: false,
+        bookmarks: state.bookmarks.filter((item) => item.id !== action.payload),
+        currentBookmark:[],
+      };
     case "rejected":
       return {
         ...state,
@@ -46,10 +63,6 @@ const bookmarkReducer = (state, action) => {
 };
 
 const BookmarkContextProvider = ({ children }) => {
-  // const [currentBookmark, setCurrentBookmark] = useState([]);
-  // const [bookmarks, setBookmarks] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-
   const [{ bookmarks, isLoading, currentBookmark }, dispatch] = useReducer(
     bookmarkReducer,
     initialState
@@ -70,41 +83,39 @@ const BookmarkContextProvider = ({ children }) => {
   }, []);
 
   const getBookmark = async (id) => {
+    if (Number(id) === currentBookmark?.id) return;
     dispatch({ type: "loading" });
-    setCurrentBookmark([]);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
-      setCurrentBookmark(data);
-      setIsLoading(false);
+      dispatch({ type: "bookmark/loaded", payload: data });
     } catch (err) {
       toast.error(err?.message);
-      setIsLoading(false);
+      dispatch({ type: "rejected", payload: err?.message });
     }
   };
 
   const createBookmark = async (newBookmark) => {
-    setIsLoading(true);
+    dispatch({ type: "loading" });
     try {
       const { data } = await axios.post(`${BASE_URL}/bookmarks/`, newBookmark);
-      setCurrentBookmark(data);
-      setBookmarks((prev) => [...prev, data]);
+      dispatch({ type: "bookmark/created", payload: data });
     } catch (err) {
       toast.error(err?.message);
+      dispatch({ type: "rejected", payload: err?.message });
     } finally {
-      setIsLoading(false);
       toast.success("successfully");
     }
   };
 
   const deleteBookmark = async (id) => {
-    setIsLoading(true);
+    dispatch({ type: "loading" });
     try {
       await axios.delete(`${BASE_URL}/bookmarks/${id}`);
-      setBookmarks((prev) => prev.filter((item) => item.id !== id));
+      dispatch({ type: "bookmark/deleted", payload: id });
     } catch (err) {
       toast.error(err?.message);
+      dispatch({ type: "rejected", payload: err?.message });
     } finally {
-      setIsLoading(false);
       toast.success("successfully");
     }
   };
