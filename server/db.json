@@ -1332,6 +1332,15 @@
       "longitude": "2.9760932922363286",
       "host_location": "Houthulst Belgium",
       "id": 1
+    },
+    {
+      "cityName": "Kortemark",
+      "countryName": "Belgium",
+      "countryCode": "🇧🇪",
+      "latitude": "51.0011327547838",
+      "longitude": "2.976608276367188",
+      "host_location": "Kortemark Belgium",
+      "id": 2
     }
   ]
 }

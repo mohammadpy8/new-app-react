@@ -72,6 +72,7 @@ const Header = () => {
 
   return (
     <div className="header">
+      <NavLink to="/">Home</NavLink>
       <NavLink to="/bookmark">Bookmarks</NavLink>
       <div className="headerSearch">
         <div className="headerSearchItem">
