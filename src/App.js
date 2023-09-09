@@ -8,6 +8,7 @@ import SingleHotel from "./components/SingleHotel/SingleHotel";
 import BookMarkLayout from "./components/BookMarkLayout/BookMarkLayout";
 import Bookmark from "./components/Bookmark/Bookmark";
 import SingleBookmark from "./components/SingleBookmark/SingleBookmark";
+import AddNewBookmark from "./components/AddNewBookmark/AddNewBookmark";
 
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
@@ -32,7 +33,7 @@ function App() {
           <Route path="/bookmark" element={<BookMarkLayout />}>
             <Route index element={<Bookmark />} />
             <Route path=":id" element={<SingleBookmark />} />
-            <Route path="add" element={<SingleHotel />} />
+            <Route path="add" element={<AddNewBookmark />} />
           </Route>
         </Routes>
       </HotelsContextProvider>
