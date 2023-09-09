@@ -14,7 +14,8 @@ const BookmarkContextProvider = ({ children }) => {
   const { isLoading, data: bookmarks } = useFetch(`${BASE_URL}/bookmarks`);
 
   const getBookmark = async (id) => {
-    setIsLoadingCurrentBookmark(true);
+      setIsLoadingCurrentBookmark(true);
+      setCurrentBookmark([]);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
       setCurrentBookmark(data);

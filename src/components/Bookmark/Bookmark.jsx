@@ -21,7 +21,7 @@ const BookMark = () => {
             >
               <div
                 className={`bookmarkItem ${
-                  item.id === currentBookmark?.id ? "current-hotel" : ""
+                  item.id === currentBookmark?.id ? "current-bookmark" : ""
                 }`}
               >
                 <ReactCountryFlag svg countryCode={item.countryCode} />
