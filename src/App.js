@@ -16,30 +16,33 @@ import { Route, Routes } from "react-router-dom";
 
 import HotelsContextProvider from "./context/HotelsContextProvider";
 import BookmarkContextProvider from "./context/BookmarkContextProvider";
+import AuthContextProvider from "./context/AuthContextProvider";
 
 import "./App.css";
 
 function App() {
   return (
-    <BookmarkContextProvider>
-      <HotelsContextProvider>
-        <Toaster />
-        <Header />
-        <Routes>
-          <Route path="/" element={<LocationList />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/hotels" element={<AppLayout />}>
-            <Route index element={<Hotels />} />
-            <Route path=":id" element={<SingleHotel />} />
-          </Route>
-          <Route path="/bookmark" element={<BookMarkLayout />}>
-            <Route index element={<Bookmark />} />
-            <Route path=":id" element={<SingleBookmark />} />
-            <Route path="add" element={<AddNewBookmark />} />
-          </Route>
-        </Routes>
-      </HotelsContextProvider>
-    </BookmarkContextProvider>
+    <AuthContextProvider>
+      <BookmarkContextProvider>
+        <HotelsContextProvider>
+          <Toaster />
+          <Header />
+          <Routes>
+            <Route path="/" element={<LocationList />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/hotels" element={<AppLayout />}>
+              <Route index element={<Hotels />} />
+              <Route path=":id" element={<SingleHotel />} />
+            </Route>
+            <Route path="/bookmark" element={<BookMarkLayout />}>
+              <Route index element={<Bookmark />} />
+              <Route path=":id" element={<SingleBookmark />} />
+              <Route path="add" element={<AddNewBookmark />} />
+            </Route>
+          </Routes>
+        </HotelsContextProvider>
+      </BookmarkContextProvider>
+    </AuthContextProvider>
   );
 }
 
