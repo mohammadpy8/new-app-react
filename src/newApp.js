@@ -26,7 +26,7 @@ const showAlert = (message, type) => {
 
 const saveToLocalStorage = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
-}
+};
 
 const addHandler = () => {
   const task = taskInput.value;
