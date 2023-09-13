@@ -2,8 +2,13 @@ const taskInput = document.getElementById("");
 const dateInput = document.getElementById("");
 const addButton = document.getElementById("");
 const alertMessage = document.getElementById("");
+const todosBody = document.getElementById("");
 
 const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+const saveToLocalStorage = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
 
 const generateId = () => {
   const id = Math.round(
@@ -24,8 +29,26 @@ const showAlert = (message, type) => {
   }, 1500);
 };
 
-const saveToLocalStorage = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+const displayTodos = () => {
+  todosBody.innerHTML = "";
+  if (!todos.length) {
+    todosBody.innerHTML = "<tr><td colspan='4'>No Task Found!!</td></tr>";
+    return;
+  }
+  todos.array.forEach((todo) => {
+    todosBody.innerHTML += `
+    <tr>
+      <td>${todo.task}</td>
+      <td>${!todo.date ? todo.date : "no date...!"}</td>
+      <td>${!todo.completed ? "Completed" : "Pending"}</td>
+      <td>
+        <button></button>
+        <button></button>
+        <button></button>
+      </td>
+    </tr>
+    `;
+  });
 };
 
 const addHandler = () => {
@@ -38,8 +61,9 @@ const addHandler = () => {
     date,
   };
   if (task) {
-      todos.push(todo);
-      saveToLocalStorage();
+    todos.push(todo);
+    saveToLocalStorage();
+    displayTodos();
     taskInput.value = "";
     dateInput.value = "";
     showAlert("todo added successfully", "success");
