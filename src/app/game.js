@@ -8,12 +8,12 @@ const scoreText = document.getElementById("");
 const nextButton = document.getElementsByClassName("");
 const questionNumber = document.getElementsByClassName("");
 const finishButton = document.getElementById("");
+const error = document.getElementsByClassName("");
 
 const level = JSON.parse(localStorage.getItem("level")) || "medium";
 
 const CORRECT_BONUS = 10;
-const URL =
-  `https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple`;
+const URL = `https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple`;
 
 let formattedData = null;
 let questionIndex = 0;
@@ -22,10 +22,15 @@ let score = 0;
 let isAccepted = true;
 
 const fetchData = async () => {
-  const response = await fetch(URL);
-  const json = await response.json();
-  formattedData = formatedData(json.results);
-  start();
+  try {
+    const response = await fetch(URL);
+    const json = await response.json();
+    formattedData = formatedData(json.results);
+    start();
+  } catch (err) {
+    loader.style.display = "none";
+    error.style.display = "block";
+  }
 };
 
 const start = () => {
