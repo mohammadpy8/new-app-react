@@ -9,9 +9,11 @@ const nextButton = document.getElementsByClassName("");
 const questionNumber = document.getElementsByClassName("");
 const finishButton = document.getElementById("");
 
+const level = JSON.parse(localStorage.getItem("level")) || "medium";
+
 const CORRECT_BONUS = 10;
 const URL =
-  "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
+  `https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple`;
 
 let formattedData = null;
 let questionIndex = 0;
