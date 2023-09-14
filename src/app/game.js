@@ -1,3 +1,5 @@
+import formatedData from "./helper";
+
 const loader = document.getElementById("");
 const container = document.getElementById("");
 
@@ -9,7 +11,7 @@ let formattedData = null;
 const fetchData = async () => {
   const response = await fetch(URL);
   const json = await response.json();
-  formattedData = json;
+  formattedData = formatedData(json.results);
   start();
 };
 
