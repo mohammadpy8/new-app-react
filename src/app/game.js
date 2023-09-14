@@ -5,6 +5,8 @@ const container = document.getElementById("");
 const questionText = document.getElementById("");
 const answerList = document.getElementById("");
 const scoreText = document.getElementById("");
+const nextButton = document.getElementsByClassName("");
+const questionNumber = document.getElementsByClassName("");
 
 const CORRECT_BONUS = 10;
 const URL =
@@ -13,7 +15,7 @@ const URL =
 let formattedData = null;
 let questionIndex = 0;
 let correctAnswer = null;
-let score = 0; 
+let score = 0;
 let isAccepted = true;
 
 const fetchData = async () => {
@@ -30,6 +32,7 @@ const start = () => {
 };
 
 const showQuestion = () => {
+  questionNumber.innerText = questionIndex + 1;
   const { question, answers, correctAnswerIndex } =
     formattedData[questionIndex];
   correctAnswer = correctAnswerIndex;
@@ -40,20 +43,36 @@ const showQuestion = () => {
 };
 
 const checkAnswer = (event, index) => {
-    if (!isAccepted) return;
-    isAccepted = false;
-    const isCorrect = index === correctAnswer ? true : false;
-    if (isCorrect) {
-        event.target.classList.add("correct");
-        score += CORRECT_BONUS;
-        scoreText.innerText = score;
-    } else {
-        event.target.classList.add("incorrect");
-        answerList[correctAnswer].classList.add("correct");
-    }
+  if (!isAccepted) return;
+  isAccepted = false;
+  const isCorrect = index === correctAnswer ? true : false;
+  if (isCorrect) {
+    event.target.classList.add("correct");
+    score += CORRECT_BONUS;
+    scoreText.innerText = score;
+  } else {
+    event.target.classList.add("incorrect");
+    answerList[correctAnswer].classList.add("correct");
+  }
+};
+
+const nextHandler = () => {
+  questionIndex++;
+  if (questionIndex < formattedData.length) {
+    isAccepted = true;
+    removeClasses();
+    showQuestion();
+  } else {
+      window.location.assign("end.html");
+  }
+};
+
+const removeClasses = () => {
+  answerList.forEach((button) => (button.className = "answer-text"));
 };
 
 window.addEventListener("load", fetchData);
+nextButton.addEventListener("click", nextHandler);
 answerList.forEach((button, index) => {
   button.addEventListener("click", (event) => checkAnswer(event, index));
 });
